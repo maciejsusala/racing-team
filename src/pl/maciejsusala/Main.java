@@ -14,8 +14,8 @@ class Main {
 
         System.out.println(PoweredVehicle.getHorsePower(5500, 450));
 
-        car.turnAlarmOn(); //TODO - sprawdzić czy jest wyłączony alarm, żeby móc go włączyć
-        motorcycle.turnAlarmOff(); //TODO - sprawdzić czy jest włączony alarm, żeby móc go wyłączyć
+        car.turnAlarmOn();
+        motorcycle.turnAlarmOff();
 
         System.out.println(car.engine.getDescription());
         System.out.println(motorcycle.engine.getDescription());
