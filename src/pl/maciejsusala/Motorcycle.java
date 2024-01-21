@@ -2,7 +2,7 @@ package pl.maciejsusala;
 
 import java.util.Objects;
 
-public class Motorcycle implements PoweredVehicle, Alarm {
+public class Motorcycle extends PoweredVehicle implements Alarm {
     String make;
     String name;
     boolean isSportMotorcycle;

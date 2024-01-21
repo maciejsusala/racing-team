@@ -2,7 +2,7 @@ package pl.maciejsusala;
 
 import java.util.Objects;
 
-public class Car implements PoweredVehicle, Alarm {
+public class Car extends PoweredVehicle implements  Alarm {
     String make;
     String name;
     int numberOfDoors;

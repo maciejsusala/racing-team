@@ -1,7 +1,11 @@
 package pl.maciejsusala;
 
-public interface Vehicle {
-    void drive();
+public abstract class Vehicle {
+    void drive() {
 
-    void stop();
+    }
+
+    void stop() {
+
+    }
 }

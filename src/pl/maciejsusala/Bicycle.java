@@ -2,7 +2,7 @@ package pl.maciejsusala;
 
 import java.util.Objects;
 
-public class Bicycle implements Vehicle {
+public class Bicycle extends Vehicle {
     String make;
     String name;
     int numberOfGears;
@@ -18,12 +18,12 @@ public class Bicycle implements Vehicle {
 
     @Override
     public void drive() {
-        System.out.println("Rower jedzie");//TODO coś ambitniejszego?
+        System.out.println("Rower jedzie");
     }
 
     @Override
     public void stop() {
-        System.out.println("Rower stoi");//TODO coś ambitniejszego?
+        System.out.println("Rower stoi");
     }
 
     public void adjustGears(int newGears) {
