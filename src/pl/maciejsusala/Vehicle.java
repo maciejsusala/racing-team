@@ -1,11 +1,8 @@
 package pl.maciejsusala;
 
 public abstract class Vehicle {
-    void drive() {
 
-    }
+    public abstract void drive();
 
-    void stop() {
-
-    }
+    public abstract void stop();
 }

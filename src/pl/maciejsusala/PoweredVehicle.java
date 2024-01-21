@@ -1,19 +1,15 @@
 package pl.maciejsusala;
 
-public class PoweredVehicle extends Vehicle {
-    public void start() {
+public abstract class PoweredVehicle extends Vehicle {
+    public abstract void start();
 
-    }
+    public abstract void turnOff();
 
-    public void turnOff() {
+    public abstract double getFuelConsumption(int kilometers);
 
-    }
-
-    public double getFuelConsumption(int kilometers){
-        return 0;
-    }
-
-    static int getHorsePower(int rpm, int torque) {
+    public static int getHorsePower(int rpm, int torque) {
         return (rpm * torque) / 5252;
     }
+
+    public abstract void drive();
 }
