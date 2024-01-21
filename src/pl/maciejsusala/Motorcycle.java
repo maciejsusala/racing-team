@@ -8,6 +8,8 @@ public class Motorcycle implements PoweredVehicle, Alarm {
     boolean isSportMotorcycle;
     double consumption;
     Engine engine;
+    boolean isEngineOn;
+    boolean isStopped = true;
 
     public Motorcycle(String make, String name, boolean isSportMotorcycle, double consumption, Engine engine) {
         this.make = make;
@@ -28,12 +30,26 @@ public class Motorcycle implements PoweredVehicle, Alarm {
 
     @Override
     public void start() {
-        System.out.println("Silnik motocykla robi wrum!");//TODO coś ambitniejszego
+        if (isEngineOn) {
+            System.out.println("Silnik bardziej już się nie włączy");
+        } else {
+            System.out.println("Silnik robi pyr pyr pyr");
+            isEngineOn = true;
+        }
     }
 
     @Override
     public void turnOff() {
-        System.out.println("Silnik motocykla wyłączony");//TODO coś ambitniejszego
+        if (isEngineOn) {
+            if(isStopped){
+                System.out.println("Silnik wyłączony");
+                isEngineOn = false;
+            } else {
+                System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
+            }
+        } else {
+            System.out.println("Bardziej się już nie da wyłączyć silnika");
+        }
     }
 
     @Override
@@ -43,12 +59,26 @@ public class Motorcycle implements PoweredVehicle, Alarm {
 
     @Override
     public void drive() {
-        System.out.println("Motocykl jedzie");//TODO coś ambitniejszego
+        if (isStopped) {
+            if (isEngineOn) {
+                System.out.println("Motocykl ruszył");
+                isStopped = false;
+            } else {
+                System.out.println("Najpierw włącz silnik!");
+            }
+        } else {
+            System.out.println(isEngineOn ? "Motocykl już jedzie" : "Najpierw włącz silnik!");
+        }
     }
 
     @Override
     public void stop() {
-        System.out.println("Motocykl stoi");//TODO coś ambitniejszego
+        if (isStopped) {
+            System.out.println("Bardziej już się nie zatrzyma");
+        } else {
+            System.out.println("Motocykl stanął");
+            isStopped = true;
+        }
     }
 
     @Override

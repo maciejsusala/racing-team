@@ -8,6 +8,8 @@ public class Car implements PoweredVehicle, Alarm {
     int numberOfDoors;
     double consumption;
     Engine engine;
+    private boolean isEngineOn;
+    private boolean isStopped = true;
 
     public Car(String make, String name, int numberOfDoors, double consumption, Engine engine) {
         this.make = make;
@@ -27,12 +29,26 @@ public class Car implements PoweredVehicle, Alarm {
 
     @Override
     public void start() {
-        System.out.println("Silnik samochodu się włączył");//TODO jakaś ambitniejsza implementacja - spradzę czy włączony zanim włączę i zapiszę stan
+        if (isEngineOn) {
+            System.out.println("Silnik bardziej już się nie włączy");
+        } else {
+            System.out.println("Silnik robi pyr pyr pyr");
+            isEngineOn = true;
+        }
     }
 
     @Override
     public void turnOff() {
-        System.out.println("Silnik samochodu się wyłączył");//TODO jakaś ambitniejsza implementacja sprawdzę czy działa żeby wyłączyć
+        if (isEngineOn) {
+            if (isStopped) {
+                System.out.println("Silnik wyłączony");
+                isEngineOn = false;
+            } else {
+                System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
+            }
+        } else {
+            System.out.println("Bardziej się już nie da wyłączyć silnika");
+        }
     }
 
     @Override
@@ -42,12 +58,26 @@ public class Car implements PoweredVehicle, Alarm {
 
     @Override
     public void drive() {
-        System.out.println("Samochód jedzie");//TODO jakaś ambitniejsza implementacja - jeśli silnik włączony to jedzie i wydaje dźwięk
+        if (isStopped) {
+            if (isEngineOn) {
+                System.out.println("Samochód ruszył");
+                isStopped = false;
+            } else {
+                System.out.println("Najpierw włącz silnik!");
+            }
+        } else {
+            System.out.println(isEngineOn ? "Samaochód już jedzie" : "Najpierw włącz silnik!");
+        }
     }
 
     @Override
     public void stop() {
-        System.out.println("Samochód stoi");//TODO jakaś ambitniejsza implementacja - sprawdzę czy samochód już nie stoi bo bardziej nie może
+        if (isStopped) {
+            System.out.println("Bardziej już się nie zatrzyma");
+        } else {
+            System.out.println("Samochód stanął");
+            isStopped = true;
+        }
     }
 
     @Override
