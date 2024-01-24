@@ -36,14 +36,24 @@ public class Car extends PoweredVehicle implements  Alarm {
 
     @Override
     public void turnOff() {
-        if (!isEngineOn) {
-            System.out.println("Bardziej się już nie da wyłączyć silnika");
-        } else if (isStopped) {
+        if(isEngineOn && isStopped){
             System.out.println("Silnik wyłączony");
             isEngineOn = false;
-        } else {
+        } else if (isEngineOn) {
             System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
+        } else {
+            System.out.println("Bardziej się już nie da wyłączyć silnika");
         }
+
+
+//        if (!isEngineOn) {
+//            System.out.println("Bardziej się już nie da wyłączyć silnika");
+//        } else if (isStopped) {
+//            System.out.println("Silnik wyłączony");
+//            isEngineOn = false;
+//        } else {
+//            System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
+//        }
     }
 
     @Override

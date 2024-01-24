@@ -39,6 +39,7 @@ public class Motorcycle extends PoweredVehicle implements Alarm {
     public void turnOff() {
         if (isEngineOn && isStopped) {
             System.out.println("Silnik wyłączony");
+            isEngineOn = false;
         } else if (isEngineOn) {
             System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
         } else {
