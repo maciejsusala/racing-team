@@ -3,25 +3,22 @@ package pl.maciejsusala;
 import java.util.Objects;
 
 public class Motorcycle extends PoweredVehicle implements Alarm {
-    String make;
-    String name;
     boolean isSportMotorcycle;
     double consumption;
-    Engine engine;
     boolean isEngineOn;
     boolean isStopped = true;
 
-    public Motorcycle(String make, String name, boolean isSportMotorcycle, double consumption, Engine engine) {
+    public Motorcycle(String make, String model, boolean isSportMotorcycle, double consumption, Engine engine) {
         this.make = make;
-        this.name = name;
+        this.model = model;
         this.isSportMotorcycle = isSportMotorcycle;
         this.consumption = consumption;
         this.engine = engine;
     }
 
-    public Motorcycle(String make, String name, boolean isSportMotorcycle, double consumption, String type, FuelType fuelType) {
+    public Motorcycle(String make, String model, boolean isSportMotorcycle, double consumption, String type, FuelType fuelType) {
         this.make = make;
-        this.name = name;
+        this.model = model;
         this.isSportMotorcycle = isSportMotorcycle;
         this.consumption = consumption;
         this.engine = new Engine(type, fuelType);
@@ -85,7 +82,7 @@ public class Motorcycle extends PoweredVehicle implements Alarm {
     public String toString() {
         return "Motorcycle{" +
                 "make='" + make + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + model + '\'' +
                 ", isSportMotorcycle=" + isSportMotorcycle +
                 ", consumption=" + consumption +
                 ", engine=" + engine +
@@ -97,11 +94,11 @@ public class Motorcycle extends PoweredVehicle implements Alarm {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Motorcycle that = (Motorcycle) o;
-        return isSportMotorcycle == that.isSportMotorcycle && Double.compare(consumption, that.consumption) == 0 && Objects.equals(make, that.make) && Objects.equals(name, that.name) && Objects.equals(engine, that.engine);
+        return isSportMotorcycle == that.isSportMotorcycle && Double.compare(consumption, that.consumption) == 0 && Objects.equals(make, that.make) && Objects.equals(model, that.model) && Objects.equals(engine, that.engine);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(make, name, isSportMotorcycle, consumption, engine);
+        return Objects.hash(make, model, isSportMotorcycle, consumption, engine);
     }
 }

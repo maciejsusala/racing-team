@@ -3,25 +3,22 @@ package pl.maciejsusala;
 import java.util.Objects;
 
 public class Car extends PoweredVehicle implements  Alarm {
-    String make;
-    String name;
     int numberOfDoors;
     double consumption;
-    Engine engine;
     private boolean isEngineOn;
     private boolean isStopped = true;
 
-    public Car(String make, String name, int numberOfDoors, double consumption, Engine engine) {
+    public Car(String make, String model, int numberOfDoors, double consumption, Engine engine) {
         this.make = make;
-        this.name = name;
+        this.model = model;
         this.numberOfDoors = numberOfDoors;
         this.consumption = consumption;
         this.engine = engine;
     }
 
-    public Car(String make, String name, int numberOfDoors, double consumption, String type, FuelType fuelType) {
+    public Car(String make, String model, int numberOfDoors, double consumption, String type, FuelType fuelType) {
         this.make = make;
-        this.name = name;
+        this.model = model;
         this.numberOfDoors = numberOfDoors;
         this.consumption = consumption;
         this.engine = new Engine(type, fuelType);
@@ -84,7 +81,7 @@ public class Car extends PoweredVehicle implements  Alarm {
     public String toString() {
         return "Car{" +
                 "make='" + make + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + model + '\'' +
                 ", numberOfDoors=" + numberOfDoors +
                 ", consumption=" + consumption +
                 ", engine=" + engine +
@@ -96,11 +93,11 @@ public class Car extends PoweredVehicle implements  Alarm {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return numberOfDoors == car.numberOfDoors && Double.compare(consumption, car.consumption) == 0 && Objects.equals(make, car.make) && Objects.equals(name, car.name) && Objects.equals(engine, car.engine);
+        return numberOfDoors == car.numberOfDoors && Double.compare(consumption, car.consumption) == 0 && Objects.equals(make, car.make) && Objects.equals(model, car.model) && Objects.equals(engine, car.engine);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(make, name, numberOfDoors, consumption, engine);
+        return Objects.hash(make, model, numberOfDoors, consumption, engine);
     }
 }

@@ -1,6 +1,8 @@
 package pl.maciejsusala;
 
 public abstract class PoweredVehicle extends Vehicle {
+
+    Engine engine;
     public abstract void start();
 
     public abstract void turnOff();
