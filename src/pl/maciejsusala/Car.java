@@ -36,15 +36,13 @@ public class Car extends PoweredVehicle implements  Alarm {
 
     @Override
     public void turnOff() {
-        if (isEngineOn) {
-            if (isStopped) {
-                System.out.println("Silnik wyłączony");
-                isEngineOn = false;
-            } else {
-                System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
-            }
-        } else {
+        if (!isEngineOn) {
             System.out.println("Bardziej się już nie da wyłączyć silnika");
+        } else if (isStopped) {
+            System.out.println("Silnik wyłączony");
+            isEngineOn = false;
+        } else {
+            System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
         }
     }
 
@@ -55,15 +53,13 @@ public class Car extends PoweredVehicle implements  Alarm {
 
     @Override
     public void drive() {
-        if (isStopped) {
-            if (isEngineOn) {
-                System.out.println("Samochód ruszył");
-                isStopped = false;
-            } else {
-                System.out.println("Najpierw włącz silnik!");
-            }
+        if(isStopped && isEngineOn){
+            System.out.println("Samochód ruszył");
+            isStopped = false;
+        } else if (isStopped){
+            System.out.println("Najpierw włącz silnik");
         } else {
-            System.out.println(isEngineOn ? "Samaochód już jedzie" : "Najpierw włącz silnik!");
+            System.out.println("Samochód już jedzie");
         }
     }
 

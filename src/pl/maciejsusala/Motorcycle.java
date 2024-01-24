@@ -37,15 +37,12 @@ public class Motorcycle extends PoweredVehicle implements Alarm {
 
     @Override
     public void turnOff() {
-        if (isEngineOn) {
-            if(isStopped){
-                System.out.println("Silnik wyłączony");
-                isEngineOn = false;
-            } else {
-                System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
-            }
+        if (isEngineOn && isStopped) {
+            System.out.println("Silnik wyłączony");
+        } else if (isEngineOn) {
+            System.out.println("Nie można wyłączyć silnika w trakcie jazdy!");
         } else {
-            System.out.println("Bardziej się już nie da wyłączyć silnika");
+            System.out.println("Bardziej już się nie da wyłączyć silnika");
         }
     }
 
@@ -56,15 +53,14 @@ public class Motorcycle extends PoweredVehicle implements Alarm {
 
     @Override
     public void drive() {
-        if (isStopped) {
-            if (isEngineOn) {
-                System.out.println("Motocykl ruszył");
-                isStopped = false;
-            } else {
-                System.out.println("Najpierw włącz silnik!");
-            }
+
+        if (isStopped && isEngineOn) {
+            System.out.println("Motocykl ruszył");
+            isStopped = false;
+        } else if (isStopped) {
+            System.out.println("Najpierw włącz silnik");
         } else {
-            System.out.println(isEngineOn ? "Motocykl już jedzie" : "Najpierw włącz silnik!");
+            System.out.println("Motocykl już jedzie");
         }
     }
 
